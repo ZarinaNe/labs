@@ -4,23 +4,23 @@
 
 print('Введите строку')
 s = input()
-stack = []
+stack = []                                  #создаем стек
 right = True
-for i in s:
-    if i in '({[':
-        stack.append(i)
-    elif i in ')}]':
-        if not stack:
-            right = False
+for i in s:                                 #проходимся по строке
+    if i in '({[':                          #если встречаем откр скобку
+        stack.append(i)                     #добавляем ее в стек
+    elif i in ')}]':                        #если встречаем закр скобку
+        if not stack:                       #если стек пуст
+            right = False                   #посл-ть не правильная
             break
-        open = stack.pop()
+        open = stack.pop()                  #берем верхний элемент стека
         if open == '(' and i == ')':
             continue
         if open == '{' and i == '}':
             continue
         if open == '[' and i == ']':
             continue
-        right = False
+        right = False                       #сравниваем виды скобок, если не соотв - посл-ть не правильная
         break
 if right and len(stack) == 0:
     print('Строка существует')
